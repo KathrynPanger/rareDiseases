@@ -1,0 +1,6 @@
+1. create a script to crawl rare disease page
+2. save each disease page to a file by disease name
+3. create a disease object for each page
+    - page corpus
+    - page wordbag
+
