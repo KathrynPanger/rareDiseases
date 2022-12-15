@@ -45,7 +45,7 @@ for page in paginationList:
     diseaseList = []
     print(diseaseList)
     for item in thisPageDiseases:
-        diseaselist.append[(item.get_attribute("innerHTML").split("\"")[1])]
+        diseaseList.append[(item.get_attribute("innerHTML").split("\"")[1])]
     for item in diseaseList:
         driver.get(item)
         with open(f"webpages/{diseaseList[i]}.html", "w") as f:
