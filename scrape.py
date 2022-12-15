@@ -1,8 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
-from helper import closePopup
-from helper import onlyInts, getDisease
+
+#Set up automatic browsing
 PATH = "/home/ygael/Code/rareDiseases/chromedriver"
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
@@ -21,24 +20,18 @@ def closePopup():
         pass
 
 
-#Get links to search result pages
-
+#Get links to each search result page
 urlExtension = "page/x/"
-#pageClass = "pagination"
-# pages = driver.find_elements(By.CLASS_NAME, pageClass)
-# lastPageNumber = int(max(onlyInts([item.text for item in pages])))
 lastPageNumber = 65
 paginationList = []
-for i in range(lastPageNumber - 1):
+for i in range(lastPageNumber):
     pageExtension = urlExtension.replace("x", str(i+1))
     pageUrl = mainPage + pageExtension
     paginationList.append(pageUrl)
 
 #Get all result links on current page
 diseaseClass = "rdr-one-title"
-
-
-for page in paginationList[35:]:
+for page in paginationList:
     driver.get(page)
     closePopup()
     thisPageDiseases = driver.find_elements(By.CLASS_NAME, diseaseClass)
