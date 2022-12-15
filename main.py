@@ -38,7 +38,7 @@ for i in range(lastPageNumber - 1):
 diseaseClass = "rdr-one-title"
 
 
-for page in paginationList[9:]:
+for page in paginationList[35:]:
     driver.get(page)
     closePopup()
     thisPageDiseases = driver.find_elements(By.CLASS_NAME, diseaseClass)
