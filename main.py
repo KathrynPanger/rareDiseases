@@ -38,15 +38,14 @@ for i in range(lastPageNumber - 1):
 diseaseClass = "rdr-one-title"
 
 
-for page in paginationList:
+for page in paginationList[9:]:
     driver.get(page)
     closePopup()
     thisPageDiseases = driver.find_elements(By.CLASS_NAME, diseaseClass)
-    diseaseList = []
-    print(diseaseList)
+    diseases= {}
     for item in thisPageDiseases:
-        diseaseList.append[(item.get_attribute("innerHTML").split("\"")[1])]
-    for item in diseaseList:
-        driver.get(item)
-        with open(f"webpages/{diseaseList[i]}.html", "w") as f:
+        diseases[item.text.replace("/","")] = item.get_attribute("innerHTML").split("\"")[1]
+    for name, url in diseases.items():
+        driver.get(url)
+        with open(f"webpages/{name}.html", "w") as f:
             f.write(driver.page_source)
