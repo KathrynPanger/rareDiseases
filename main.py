@@ -28,5 +28,4 @@ lastPage = max(onlyInts([item.text for item in pages]))
 #Get all result links on current page
 diseaseClass = "rdr-one-title"
 thisPageDiseases = driver.find_elements(By.CLASS_NAME, diseaseClass)
-for item in thisPageDiseases:
-    print(item.text)
+diseaseList = [item.text for item in thisPageDiseases]
