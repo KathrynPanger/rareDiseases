@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 class Disease():
     def __init__(self, fileName, webpage):
         self.name = fileName
-        self.diseaseId = hash(fileName)
+        self.id = hash(fileName)
         self.webpage = webpage
         self.corpus = self.getPageText(fileName)
         self.wordBag = self.getWordBag(self.corpus)
