@@ -9,7 +9,9 @@ for unwantedDiv in omitableDivList:
     for div in soup.find_all("div", {'id': f'{unwantedDiv}'}):
         div.decompose()
 medicalText = soup.find_all("div", {"class": "rdr-box"})
-print(medicalText)
+for item in medicalText:
+    item = item.text
+    print(item)
 
 
 #don't forget extract()
