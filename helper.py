@@ -1,3 +1,5 @@
+import re
+
 def onlyInts(list):
     integerList = []
     for item in list:
@@ -22,3 +24,14 @@ def closePopup():
         xButtons[0].click()
     except:
         pass
+
+    def getCorpus(textBody: str):
+        regex = re.compile('[^a-zA-Z]')
+        alphabeticalOnly = regex.sub('', textBody)
+        wordCounts = {}
+        for item not in alphabeticalOnly.split():
+            if item in wordcounts:
+                wordcounts[item] = 1
+            else:
+                wordcounts[item] += 1
+        return wordCounts
