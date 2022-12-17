@@ -10,7 +10,7 @@ class Disease():
     def getWordBag(self, textBody: str):
         regex = re.compile('[^a-zA-Z]')
         wordCounts = {}
-        for item in textBody.split():
+        for item in textBody.lower().split():
             item = regex.sub('', item)
             if item not in wordCounts:
                 wordCounts[item] = 1
