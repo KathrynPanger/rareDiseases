@@ -2,10 +2,10 @@ import re
 from bs4 import BeautifulSoup
 class Disease():
     def __init__(self, fileName, webpage):
-        self.fileName = fileName
+        self.name = fileName
         self.diseaseId = hash(fileName)
         self.webpage = webpage
-        self.corpus = self.getPageText(self.fileName)
+        self.corpus = self.getPageText(fileName)
         self.wordBag = self.getWordBag(self.corpus)
     def getWordBag(self, textBody: str):
         regex = re.compile('[^a-zA-Z]')
