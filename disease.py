@@ -2,7 +2,7 @@ import re
 from bs4 import BeautifulSoup
 class Disease():
     def __init__(self, fileName, webpage):
-        self.name = fileName
+        self.name = fileName.split(".")[0]
         self.id = hash(fileName)
         self.webpage = webpage
         self.corpus = self.getPageText(fileName)
