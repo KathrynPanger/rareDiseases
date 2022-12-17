@@ -1,24 +1,24 @@
 import re
 from bs4 import BeautifulSoup
 class Disease():
-    def __init__(self, name, webpage):
-        self.name = name
-        self.diseaseId = hash(name)
+    def __init__(self, fileName, webpage):
+        self.fileName = fileName
+        self.diseaseId = hash(fileName)
         self.webpage = webpage
-        self.corpus = []
-        self.wordBag = {}
+        self.corpus = self.getPageText(self.fileName)
+        self.wordBag = self.getWordBag(self.corpus)
     def getWordBag(self, textBody: str):
         regex = re.compile('[^a-zA-Z]')
-        alphabeticalOnly = regex.sub('', textBody)
         wordCounts = {}
-        for item in alphabeticalOnly.split():
+        for item in textBody.split():
+            item = regex.sub('', item)
             if item not in wordCounts:
                 wordCounts[item] = 1
             else:
                 wordCounts[item] += 1
         return wordCounts
-    def getPageText(self, webpage):
-        file = open(webpage).read()
+    def getPageText(self, filename):
+        file = open(filename).read()
         soup = BeautifulSoup(file, features="html.parser")
         omitableDivList = ["acknowledgment", "references", "years_published",
                            "disclaimer", "supporting-organizations",
